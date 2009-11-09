@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#The six-week project schedule
 
 = Introduction =
 
