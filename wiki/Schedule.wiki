@@ -1,14 +1,1 @@
-#The six-week project schedule
-
-= Introduction =
-
-Add your content here.
-
-
-
-= Details =
-
-This is our brief schedule 
-
-* 1
-* 2
+= Introduction = 
