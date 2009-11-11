@@ -1,1 +1,11 @@
-= Introduction = 
+== Introduction == 
+The six-week project schedule
+
+
+
+== Details ==
+
+This is our brief schedule 
+
+* 1
+* 2
