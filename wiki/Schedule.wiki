@@ -5,9 +5,10 @@
 Add your content here.
 
 
+
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+11/9  XForms
+11/16  makeImage, learn views
+11/23 img, widgets, or make widget
+11/30  specify img in xforms, read data in collect, collect, javarosa
