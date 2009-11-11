@@ -8,7 +8,7 @@ Add your content here.
 
 = Details =
 
-11/9  XForms
-11/16  makeImage, learn views
-11/23 img, widgets, or make widget
-11/30  specify img in xforms, read data in collect, collect, javarosa
+*11/9  XForms
+*11/16  makeImage, learn views
+*11/23 img, widgets, or make widget
+*11/30  specify img in xforms, read data in collect, collect, javarosa
