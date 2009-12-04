@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_alignParentTop="true">
+
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/buttonholder">
+        
+        <!-- 
+    <ToggleButton 
+     android:id="@+id/toggle_button"
+     android:textOn="@string/toggle_selected"
+     android:textOff="@string/toggle_selected"
+    android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:padding="15px"
+     android:textSize="8pt" 
+android:layout_weight="1" 
+     /> -->
+     
+    <Button 
+    android:id="@+id/add_button"
+    android:text="@string/add_file"
+      android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:padding="15px"
+     android:textSize="8pt" 
+android:layout_weight="1"      />
+    
+  </LinearLayout>
+  
+
+	<ListView
+		android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/buttonholder"
+		android:layout_alignParentTop="true" />
+		
+   <TextView 
+      android:id="@android:id/empty"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:text="@string/no_items_display"
+      android:textSize="7pt" 
+      android:gravity="center"/>
+
+
+</RelativeLayout>
