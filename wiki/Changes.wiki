@@ -1,0 +1,10 @@
+#summary Changes from original ODK Collect and javarosa core
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+ODK Collect: QuestionView.java
