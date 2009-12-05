@@ -173,6 +173,10 @@ public class QuestionView extends ScrollView {
     private void AddQuestionImage(PromptElement p) {
     	Log.i("Hedy","AddQuestionImage Get Called");
     	final String imagePath = p.getQuestionImage();
+    	if(imagePath == null)
+    	{
+    		return;
+    	}
        
         File f = new File(imagePath);
 
@@ -190,11 +194,15 @@ public class QuestionView extends ScrollView {
        
         ImageView iv = new android.widget.ImageView(getContext());
         
-    	
-        
-    	iv.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-                LayoutParams.FILL_PARENT));
+//        iv.setScaleType(android.widget.ImageView.ScaleType.CENTER_INSIDE);
 
+        iv.setAdjustViewBounds(true);
+        iv.setMaxHeight(200);
+        iv.setMaxWidth(200);
+        
+    	iv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT));
+    
     	iv.setPadding(0, 10, 0, 0);
     
         
