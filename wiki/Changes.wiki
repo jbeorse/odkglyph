@@ -3,6 +3,17 @@
 = ODK Collect: = 
 
 *org.odk.collect.android.views QuestionView.java
+public void buildView(PromptElement p)
 void AddQuestionImage(PromptElement p) 
 
+*org.odk.collect.android.logic
+String getQuestionImage()
 
+*org.javarosa.core.model
+public String getImagePath()
+public Hashtable<String,String> getOtherAttribute()
+ public void setOtherAttribute(Hashtable<String,String> otherAttribute) 
+
+= Javarosa Core: = 
+* org.javarosa.xform.parse;
+private static void parseQuestionLabel 
