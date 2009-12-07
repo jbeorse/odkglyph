@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary How to set up the Development Environment
 
 = Introduction =
 
@@ -7,7 +7,11 @@ Add your content here.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+* Check the project with SVN 
+  # URL: http://odkglyph.googlecode.com/svn/trunk/
+  # Project to check out: ODK Collect, javarosa-core, javarosa-libs
+* Set up the correct link source
+  # In the odk-collect project properties, under Java Build Path, and
+Source, Link Source and point your folder location to your
+javarosa/core/src location. There will be an error in the folder name.
+Change it to javarosa.
