@@ -8,7 +8,7 @@ public void buildView(PromptElement p)
 
 void AddQuestionImage(PromptElement p) 
 
-*rg.odk.collect.android.logic
+*org.odk.collect.android.logic
 
 String getQuestionImage()
 
