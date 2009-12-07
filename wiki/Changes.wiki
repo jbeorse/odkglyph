@@ -1,6 +1,6 @@
 #summary Changes from original ODK Collect and javarosa core
 
-= ODK Collect: = 
+=ODK Collect:= 
 
 *org.odk.collect.android.views QuestionView.java
 public void buildView(PromptElement p)
