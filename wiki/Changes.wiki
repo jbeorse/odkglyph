@@ -3,7 +3,9 @@
 =ODK Collect:= 
 
 *org.odk.collect.android.views QuestionView.java
+
 public void buildView(PromptElement p)
+
 void AddQuestionImage(PromptElement p) 
 
 *org.odk.collect.android.logic
