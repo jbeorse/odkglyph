@@ -1,3 +1,8 @@
 #summary Changes from original ODK Collect and javarosa core
 
-ODK Collect: QuestionView.java
+= ODK Collect: = 
+
+*org.odk.collect.android.views QuestionView.java
+void AddQuestionImage(PromptElement p) 
+
+
