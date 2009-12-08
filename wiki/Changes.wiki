@@ -21,6 +21,7 @@ return a list of images for each question
 = Javarosa Core: = 
 
 *package org.javarosa.core.model FormDef
+
 {{{public void setImageSource(Hashtable<String, ArrayList<String>> iimage) }}}
   set the iimage framework image set
 
@@ -28,22 +29,30 @@ return a list of images for each question
   return image set lookup table
 
 *org.javarosa.core.model QuestionDef
+
 {{{public void setImageSet(ArrayList<String> imgSet)}}}
+
 {{{ArrayList<String> getImageSet()}}}
+
 {{{public void setImagePath(String imgPath)}}}
+
 {{{public String getImagePath()}}}
 
 {{{public Hashtable<String,String> getOtherAttribute()}}}
+
 {{{public void setOtherAttribute(Hashtable<String,String> otherAttribute)}}}
 
 *org.javarosa.xform.parse XFormParser
+
 {{{private static void parseModel}}}
   modify to check iimage element, call {{{parseIImage(f, child)}}}
 
 {{{private static void parseIImage(FormDef f, Element iimage)}}}
   modify to check imageSet and call {{{parseImageSet}}}
+
 {{{private static void parseImageSet(Hashtable<String, ArrayList<String>> iimageTable, Element imageset) }}}
   parse each imageSet, call {{{parseImage}}}
+
 {{{private static void parseImage(ArrayList<String> imageList, Element image)}}}
   parse image within one imageset
 
