@@ -19,6 +19,7 @@ package org.javarosa.core.model;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.NoSuchElementException;
@@ -72,6 +73,9 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 	 * A unique external name that is used to identify the form between machines
 	 */
 	private Localizer localizer;
+	
+	//Hedy
+	private Hashtable<String, ArrayList<String>> iimageTable;
 	public Vector triggerables; // <Triggerable>; this list is topologically ordered, meaning for any tA and tB in
 	//the list, where tA comes before tB, evaluating tA cannot depend on any result from evaluating tB
 	private boolean triggerablesInOrder; //true if triggerables has been ordered topologically (DON'T DELETE ME EVEN THOUGH I'M UNUSED)
@@ -210,6 +214,12 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 		if (this.localizer != null) {
 			this.localizer.registerLocalizable(this);
 		}
+	}
+	
+
+	public void setImageSource(Hashtable<String, ArrayList<String>> iimage){
+		this.iimageTable = iimage;
+		
 	}
 
 	// don't think this should ever be called(!)
@@ -1154,7 +1164,13 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	//Hedy
+	public Hashtable<String, ArrayList<String>> getImageSource()
+	{
+		return iimageTable;
+	}
+	
 	public Localizer getLocalizer() {
 		return localizer;
 	}

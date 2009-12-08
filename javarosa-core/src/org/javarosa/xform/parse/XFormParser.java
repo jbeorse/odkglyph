@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -341,6 +342,9 @@ public class XFormParser {
 			
 			if ("itext".equals(childName)) {
 				parseIText(f, child);
+			} else if ("iimage".equals(childName)) {
+				//parseIImage
+				parseIImage(f, child);
 			} else if ("instance".equals(childName)) {
 				//we save parsing the instance node until the end, giving us the information we need about
 				//binds and data types and such
@@ -477,7 +481,7 @@ public class XFormParser {
 
 	private static void parseQuestionLabel (FormDef f, QuestionDef q, Element e) {
 		
-		System.out.println("********* parseQuestionLabel get called" );
+
 		String label = getLabel(e, f);
 		String ref = e.getAttributeValue("", "ref");
 
@@ -496,33 +500,40 @@ public class XFormParser {
 			q.setShortText(label);
 		}
 		
-	    // Pass all attribute to quetion def. Sep fucntion
+		String img = e.getAttributeValue("","img");
+		if (img != null) {
+			System.out.println("img content" + img);
+			if (img.startsWith("jr:iimage('") && img.endsWith("')")) {
+				String imgRef = img.substring("jr:iimage('".length(), img.indexOf("')"));
+				if(f.getImageSource()==null){					
+					q.setImageSet(null);
+				}else{					
+					q.setImageSet(f.getImageSource().get(imgRef));
+				}
+				
+			} else {
+				q.setImagePath(img);
+			}
+		} else {
+			q.setImageSet(null);
+			q.setImagePath(null);
+		}
+		
+	    // Pass all other attribute to QuestionDef
 		Hashtable<String,String> allotherAttribute = new Hashtable<String,String>();
 		int itemcount = e.getAttributeCount();
-		for (int i=0; i<itemcount; i++){
+		for (int i=0; i<itemcount; i++){			
 			String attributename = e.getAttributeName(i); 
 			String attributeValue = e.getAttributeValue(i);
 			
-			allotherAttribute.put(attributename, attributeValue);
-			//System.out.println("********* Name :  " + attributename + "Value" + attributeValue );
+			if(attributename.equals("ref"))
+				continue;
+			if(attributename.equals("img"))
+				continue;
+			allotherAttribute.put(attributename, attributeValue);			
 		}
 		
-		q.setOtherAttribute(allotherAttribute);
-		
-		// "" or null?
-				
-	//	String img = e.getAttributeValue("", "img");
-	//	System.out.println("***********" + "image Path is " + img);
-		//q.setImagePath("/sdcard/gallery_photo_6.jpg");
-	//	if(img != null)
-	//	{
-	//		q.setAllOtherAtrribute(hashtable);
-			
-	//		q.setImagePath(img);
-	//	}
-		
-
-		
+		q.setOtherAttribute(allotherAttribute);	
 	}
 	
 
@@ -823,6 +834,47 @@ public class XFormParser {
 		}
 	}
 	
+
+	private static void parseIImage(FormDef f, Element iimage) {
+		Hashtable<String, ArrayList<String>> iimageTable = new Hashtable<String, ArrayList<String>>();
+		f.setImageSource(iimageTable);
+		
+		for (int i = 0; i < iimage.getChildCount(); i++) {
+			Element imageset = iimage.getElement(i);
+			if(imageset == null){
+				continue;
+			}
+
+			parseImageSet(iimageTable, imageset);
+		}
+	}
+
+	private static void parseImageSet(Hashtable<String, ArrayList<String>> iimageTable, Element imageset) {
+		//get the attribute first
+		String name = imageset.getAttributeValue("", "setName");
+	
+		ArrayList<String> imageList = new ArrayList<String>();
+		for (int i = 0; i < imageset.getChildCount(); i++) {
+				
+			Element image = imageset.getElement(i);
+			if(image == null){
+				continue;
+			}
+		
+			parseImage(imageList, image);						
+		}
+		iimageTable.put(name, imageList);
+	}
+
+	private static void parseImage(ArrayList<String> imageList, Element image){
+		//currently unused
+		String id = image.getAttributeValue("", "id");
+		String data = getXMLText(image,true);
+
+		if (data != null){			
+			imageList.add(data);
+		}
+	}
 	/**
 	 * KNOWN ISSUES WITH ITEXT
 	 *
