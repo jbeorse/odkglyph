@@ -2,9 +2,9 @@
 
 =ODK Collect:= 
 
-*org.odk.collect.android.views QuestionView.java
+org.odk.collect.android.views QuestionView.java
 
-'public void buildView(PromptElement p)'
+{{{public void buildView(PromptElement p)}}}
   call function AddQuestionImage(p);
 
 'private void AddOneImage(final String imagePath)'
