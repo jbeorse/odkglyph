@@ -4,18 +4,20 @@
 
 *org.odk.collect.android.views QuestionView.java
 
-public void buildView(PromptElement p)
+'public void buildView(PromptElement p)'
   call function AddQuestionImage(p);
 
-private void AddOneImage(final String imagePath)
+'private void AddOneImage(final String imagePath)'
   add imageView for each singal image with click listener for separate view
-void AddQuestionImage(PromptElement p) 
+'void AddQuestionImage(PromptElement p)' 
   add images to question
 
 *org.odk.collect.android.logic PromptElement.java
 
-ArrayList<String> getQuestionImages()
+'ArrayList<String> getQuestionImages()'
 return a list of images for each question
+
+= Javarosa Core: = 
 
 *org.javarosa.core.model
 
@@ -25,7 +27,6 @@ public Hashtable<String,String> getOtherAttribute()
 
 public void setOtherAttribute(Hashtable<String,String> otherAttribute) 
 
-= Javarosa Core: = 
 
 *org.javarosa.xform.parse;
 
