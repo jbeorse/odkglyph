@@ -19,6 +19,7 @@ package org.odk.collect.android.views;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -164,16 +165,9 @@ public class QuestionView extends ScrollView {
                 
     }
 
-    
-   
-    /**
-     * Hedy
-     * Add a TextView containing the question text.
-     */
-    private void AddQuestionImage(PromptElement p) {
-    	Log.i("Hedy","AddQuestionImage Get Called");
-    	final String imagePath = p.getQuestionImage();
-    	if(imagePath == null)
+    //private method to set one single image
+	private void AddOneImage(final String imagePath){
+		if(imagePath == null)
     	{
     		return;
     	}
@@ -193,10 +187,9 @@ public class QuestionView extends ScrollView {
        
        
         ImageView iv = new android.widget.ImageView(getContext());
-        
-//        iv.setScaleType(android.widget.ImageView.ScaleType.CENTER_INSIDE);
 
         iv.setAdjustViewBounds(true);
+        //image maxHeigh and maxWidth
         iv.setMaxHeight(200);
         iv.setMaxWidth(200);
         
@@ -223,23 +216,22 @@ public class QuestionView extends ScrollView {
 
             }
         });
-
-
-    	
-    	
-    	
-    	
-   /* 	TextView tv = new TextView(getContext());
-        tv.setText(p.getQuestionText());
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, TEXTSIZE);
-        tv.setTypeface(null, Typeface.BOLD);
-
-        tv.setPadding(0, 0, 0, 5);
-
-        // wrap to the widget of view
-        tv.setHorizontallyScrolling(false);
-        mView.addView(tv);*/
-                
+		
+	}
+   
+    /**
+     * Hedy
+     * Add a TextView containing the question text.
+     */
+    private void AddQuestionImage(PromptElement p) {
+    
+    	ArrayList<String> imgSet = p.getQuestionImages();
+    	if(imgSet != null){
+    		for(int i=0; i< imgSet.size();i++){
+    			String imagePath = imgSet.get(i);
+    			AddOneImage(imagePath);
+    		}
+    	}                
     }
 
     
