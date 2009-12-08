@@ -27,6 +27,7 @@ import org.javarosa.formmanager.view.FormElementBinding;
 import org.odk.collect.android.activities.FormEntryActivity;
 import org.odk.collect.android.views.QuestionView;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -215,13 +216,20 @@ public class PromptElement {
     /**
      * The image path of question in the prompt
      */
-    public String getQuestionImage()
+    public ArrayList<String> getQuestionImages()
     {
-    	// the JavaRosa Library has to change, so FormElementBinding should have the info
-    	//return mBinding.form.fillTemplateString(((QuestionDef) mBinding.element).getLongText(),
-         //       mBinding.instanceRef);
-    	return (((QuestionDef) mBinding.element).getImagePath());
-    	//return "/sdcard/gallery_photo_6.jpg";
+    	ArrayList<String> QImageSet = ((QuestionDef) mBinding.element).getImageSet();
+    	if(QImageSet != null){
+    		return QImageSet;
+    	}
+    	String imagePath = (((QuestionDef) mBinding.element).getImagePath());
+    	if( imagePath != null){
+    		ArrayList<String> imgSet = new ArrayList<String>();
+    		imgSet.add(imagePath);
+    		return imgSet;
+    	}
+    	
+    	return null;
     }
 
 
