@@ -1,0 +1,31 @@
+<h:html xmlns="http://www.w3.org/2002/xforms"
+        xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa">
+	<h:head>
+		<h:title>Demo Form</h:title>
+
+		<model>
+		     <instance>
+			
+				<student>
+					<questionA />
+					<questionB />
+				</student>
+			</instance>
+		</model>
+	</h:head>
+
+	<h:body>
+	
+		<input ref="questionA">
+			<label img="/sdcard/gallery_photo_4.jpg">What do you think about this pix?</label>
+		</input>
+			
+		<input ref="questionB">
+			<label img="/sdcard/1004.jpg">Do you like this pix?</label>
+		</input>
+
+	</h:body>
+</h:html>
