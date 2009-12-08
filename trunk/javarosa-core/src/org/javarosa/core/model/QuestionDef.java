@@ -19,6 +19,7 @@ package org.javarosa.core.model;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -65,7 +66,9 @@ public class QuestionDef implements IFormElement, Localizable {
 	//Hedy
 	private Hashtable<String,String> otherAttribute;
 	//need to put in the constant 
-	private final static String imgPath =  "img";
+	private final static String ConstantimgPath =  "img";
+	private ArrayList<String> imageSet;
+	private String imagePath;
 
 	
 
@@ -151,7 +154,6 @@ public class QuestionDef implements IFormElement, Localizable {
 	}
 	
 	public void setControlType(int controlType) {
-		System.out.println("*********** setControlType Get Called");
 		this.controlType = controlType;
 	}
 
@@ -164,12 +166,10 @@ public class QuestionDef implements IFormElement, Localizable {
 	}	
 	
 	public String getLongText () {
-		System.out.println("*********** getLongText Get Called");
 		return longText;
 	}
 	
 	public void setLongText (String longText) {
-		System.out.println("*********** setLongText Get Called");
 		this.longText = longText;
 	}
 
@@ -203,23 +203,26 @@ public class QuestionDef implements IFormElement, Localizable {
     	}
     } 
 
-    //Hedy , test interaction with JavaRosa and ODK
-    public String getImagePath() {
-    	if(otherAttribute.containsKey(imgPath))
-    	{
-    		return otherAttribute.get(imgPath);
-    	}
-    	else
-    	{
-    		return null;
-    	}
+    public void setImageSet(ArrayList<String> imgSet) {
+    	// no need to deal with localization 
+    	this.imageSet = imgSet;
+    	
     }
     
-   /* public void setImagePath(String imagePath) {
-    	// no need to deal with localization 
-    	this.imagePath = imagePath;
-    	
-    }*/
+    public ArrayList<String> getImageSet(){
+    	return this.imageSet;
+    }
+    
+    public void setImagePath(String imgPath) {
+    	this.imagePath = imgPath;
+    }
+    
+    //Hedy , test interaction with JavaRosa and ODK
+    public String getImagePath() {
+    	return this.imagePath;
+    }
+    
+
     
     public Hashtable<String,String> getOtherAttribute() {
     	return this.otherAttribute;
