@@ -80,6 +80,13 @@ public class QuestionDef implements IFormElement, Localizable {
 	private OrderedHashtable selectItems;  	/** String -> String */
 	private OrderedHashtable selectItemIDs;	/** String -> String */
 	
+	//Select item image for direct path
+	private OrderedHashtable selectItemImages; 
+	
+	//Select item image for direct ref
+
+	private OrderedHashtable selectItemImagesref; 
+	private Hashtable<String,ArrayList<String>> selectItemImagesTable;
 	
 	private Vector selectItemsLocalizable;
 	
@@ -450,5 +457,56 @@ public class QuestionDef implements IFormElement, Localizable {
 	 */
 	public int getDeepChildCount() {
 		return 1;
+	}
+
+	public void addSelectItemImage(String label, String img) {
+		 if(selectItemImages == null){
+
+			 selectItemImages = new OrderedHashtable();
+		 }
+		 
+		 selectItemImages.put(label, img); 
+		
+	}
+	
+	public void addSelectItemImageRef(String label, String imgref){
+		if(this.selectItemImagesref == null){
+			selectItemImagesref = new OrderedHashtable();
+		}
+		System.out.println("Put image addSelectItemImageRef ");
+		System.out.println("label" + label);
+		System.out.println("imgref" + imgref);
+		
+		selectItemImagesref.put(label, imgref);
+	}
+	
+	public void addSelectItemImageSet(String imgref, ArrayList<String> imgs){
+		if(this.selectItemImagesTable == null){
+			this.selectItemImagesTable = new Hashtable<String,ArrayList<String>>();
+		}
+		System.out.println("Put image addSelectItemImageRef ");
+		System.out.println("label" + imgref);
+		selectItemImagesTable.put(imgref, imgs); 		
+	}
+	
+	public OrderedHashtable getSelectItemImages () {
+
+		return selectItemImages;
+
+	}
+	
+	public OrderedHashtable getSelectItemImagesRef () {
+
+		return selectItemImagesref;
+
+	}
+	
+	public ArrayList<String> getSelectItemImagesSet (String imgRef) {
+
+		if(selectItemImagesTable ==null){
+			return null;
+		}
+		
+		return selectItemImagesTable.get(imgRef);
 	}
 }

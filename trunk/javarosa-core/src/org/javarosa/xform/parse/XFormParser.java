@@ -651,6 +651,7 @@ public class XFormParser {
 		String textRef = null;
 		String value = null;
 
+
 		for (int i = 0; i < e.getChildCount(); i++) {
 			int type = e.getType(i);
 			Element child = (type == Node.ELEMENT ? e.getElement(i) : null);
@@ -659,7 +660,8 @@ public class XFormParser {
 			if ("label".equals(childName)) {
 				label = getXMLText(child, true);
 				String ref = child.getAttributeValue("", "ref");
-
+				
+				
 				if (ref != null) {
 					if (ref.startsWith("jr:itext('") && ref.endsWith("')")) {
 						textRef = ref.substring("jr:itext('".length(), ref.indexOf("')"));
@@ -669,6 +671,24 @@ public class XFormParser {
 						throw new XFormParseException("malformed ref [" + ref + "] for <item>");
 					}
 				}
+				
+				String img = child.getAttributeValue("","img");
+				if (img != null) {
+					
+					if (img.startsWith("jr:iimage('") && img.endsWith("')")) {
+						String imgRef = img.substring("jr:iimage('".length(), img.indexOf("')"));
+						if(f.getImageSource() != null){	
+							System.out.println("Get called" + imgRef +"with lable" + label);
+							
+							q.addSelectItemImageRef(label, imgRef);
+							q.addSelectItemImageSet(imgRef, f.getImageSource().get(imgRef));
+						}
+						
+					} else {
+						q.addSelectItemImage(label, img);
+					}
+				} 			
+				
 			} else if ("value".equals(childName)) {
 				value = getXMLText(child, true);
 				
@@ -696,11 +716,13 @@ public class XFormParser {
 		if (value == null) {
 			throw new XFormParseException("<item> without proper <value>");
 		}
-
+		
+	
 		if (textRef != null) {
 			q.addSelectItemID(textRef, true, value);
 		} else {
 			q.addSelectItemID(label, false, value);
+	
 		}
 	}
 
