@@ -201,6 +201,22 @@ public class PromptElement {
         return (((QuestionDef) mBinding.element).getSelectItems());
     }
 
+    public OrderedHashtable getSelectItemImages() {
+
+    	return (((QuestionDef) mBinding.element).getSelectItemImages());
+
+    }
+    
+    public OrderedHashtable getSelectItemImagesRef() {
+
+    	return (((QuestionDef) mBinding.element).getSelectItemImagesRef());
+
+    }
+
+    public ArrayList<String> getSelectItemImageSet(String imgRef){
+    	return (((QuestionDef) mBinding.element).getSelectItemImagesSet(imgRef));
+    }
+
 
     /**
      * The text of question in the prompt.

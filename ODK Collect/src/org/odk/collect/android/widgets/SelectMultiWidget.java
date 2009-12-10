@@ -16,12 +16,12 @@
 
 package org.odk.collect.android.widgets;
 
-import android.content.Context;
-import android.util.TypedValue;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Vector;
 
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
@@ -30,8 +30,20 @@ import org.javarosa.core.util.OrderedHashtable;
 import org.odk.collect.android.logic.GlobalConstants;
 import org.odk.collect.android.logic.PromptElement;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.FrameLayout.LayoutParams;
 
 /**
  * SelctMultiWidget handles multiple selection fields using checkboxes.
@@ -74,13 +86,22 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
         // counter for offset
         int i = 0;
         while (en.hasMoreElements()) {
+        	Log.i("Hedy","More elements");
             k = (String) en.nextElement();
             v = (String) mItems.get(k);
             CheckBox c = ((CheckBox) findViewById(CHECKBOX_ID + i));
-            if (c.isChecked()) {
-                ve.add(new Selection(v));
-            }
-            i++;
+            
+            if(c != null){
+            	if (c.isChecked()) {
+                    ve.add(new Selection(v));
+                }
+            	 i++;
+             }else
+             {
+            	 i++;
+            	 Log.i("Hedy","Checkbox is null w/ index" + i);
+             }
+            
         }
 
         if (ve.size() == 0) {
@@ -93,73 +114,130 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
 
     @SuppressWarnings("unchecked")
     public void buildView(final PromptElement prompt) {
-        mItems = prompt.getSelectItems();
 
-        setOrientation(LinearLayout.VERTICAL);
+    	mItems = prompt.getSelectItems();
+    	setOrientation(LinearLayout.VERTICAL);
+    	Vector ve = new Vector();
+    	if (prompt.getAnswerValue() != null) {
+    		ve = (Vector) prompt.getAnswerObject();
+    	}
 
-        Vector ve = new Vector();
-        if (prompt.getAnswerValue() != null) {
-            ve = (Vector) prompt.getAnswerObject();
-        }
+    	if (prompt.getSelectItems() != null) {
+    		OrderedHashtable h = prompt.getSelectItems();
+    		
+    		//ODK Glyph Hedy
+    		OrderedHashtable images = prompt.getSelectItemImages();
+    		OrderedHashtable imagesRef = prompt.getSelectItemImagesRef();
+    		
+    		Enumeration en = h.keys();
+    		String k = null;
+    		String v = null;
+    		// counter for offset
+    		int i = 0;
+    		while (en.hasMoreElements()) {
+    			k = (String) en.nextElement();
+    			v = (String) h.get(k);
+    			// no checkbox group so id by answer + offset
+    			CheckBox c = new CheckBox(getContext());
+    			// when clicked, check for readonly before toggling
+    			c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    					if (!mCheckboxInit && prompt.isReadOnly()) {
+    						if (buttonView.isChecked()) {
+    							buttonView.setChecked(false);
+    						} else {
+    							buttonView.setChecked(true);
+    						}
+    					}
+    				}
+    			});
+    			c.setId(CHECKBOX_ID + i);
+    			Log.i("Hedy","Current item index is " + i);
+    			c.setText(k);
+    			c.setTextSize(TypedValue.COMPLEX_UNIT_PT, GlobalConstants.APPLICATION_FONTSIZE);
+    			for (int vi = 0; vi < ve.size(); vi++) {
+    				// match based on value, not key
+    				if (v.equals(((Selection) ve.elementAt(vi)).getValue())) {
+    					c.setChecked(true);
+    					break;
+    				}
+    			}
+    			c.setFocusable(!prompt.isReadOnly());
+    			c.setEnabled(!prompt.isReadOnly());
+    			addView(c);
+    			i++;
+    			//** ODK Glyph Jeff/ Hedy added code***//
+    			if(images != null && images.containsKey(k)){
 
-        if (prompt.getSelectItems() != null) {
-            OrderedHashtable h = prompt.getSelectItems();
-            Enumeration en = h.keys();
-            String k = null;
-            String v = null;
+    				String imagePath = (String) images.get(k);
+    				AddOneImage(imagePath);
+    			}else if (imagesRef!=null && imagesRef.containsKey(k)){
+    				
+    				String imageSetRef = (String)imagesRef.get(k);
+    				ArrayList<String> imgSet = prompt.getSelectItemImageSet(imageSetRef);
+    				
+    				if(imgSet != null){
+    		    		for(int l=0; l< imgSet.size();l++){
+    		    			String imagePath = imgSet.get(l);
+    		    			AddOneImage(imagePath);
+    		    		}
+    		    	}               
+    			}
+    			//**END
+    			
+    		}
+    	}
 
-            // counter for offset
-            int i = 0;
-
-            while (en.hasMoreElements()) {
-
-                k = (String) en.nextElement();
-                v = (String) h.get(k);
-
-                // no checkbox group so id by answer + offset
-                CheckBox c = new CheckBox(getContext());
-
-                // when clicked, check for readonly before toggling
-                c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (!mCheckboxInit && prompt.isReadOnly()) {
-                            if (buttonView.isChecked()) {
-                                buttonView.setChecked(false);
-                            } else {
-                                buttonView.setChecked(true);
-                            }
-                        }
-                    }
-                });
-
-                c.setId(CHECKBOX_ID + i);
-                c.setText(k);
-                c.setTextSize(TypedValue.COMPLEX_UNIT_PT, GlobalConstants.APPLICATION_FONTSIZE);
-
-                for (int vi = 0; vi < ve.size(); vi++) {
-                    // match based on value, not key
-                    if (v.equals(((Selection) ve.elementAt(vi)).getValue())) {
-                        c.setChecked(true);
-                        break;
-                    }
-                }
-
-                c.setFocusable(!prompt.isReadOnly());
-                c.setEnabled(!prompt.isReadOnly());
-                addView(c);
-                i++;
-            }
-        }
-
-        mCheckboxInit = false;
+    	mCheckboxInit = false;
     }
 
 
+    //** ODK Glyph Hedy added code***//
+    private void AddOneImage(final String imagePath){
+    	if(imagePath == null)
+    	{
+    		return;
+    	}
+    	File f = new File(imagePath);
+    	Bitmap bm = null;
+    	try {
+    		bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));
+    	} catch (FileNotFoundException e) {
+    		Log.i("ODK Glyph Error","file not found");
+    		e.printStackTrace();
+    	} catch (IOException e) {
+    		Log.i("ODK Glyph Error","IO Exception found");
+    		e.printStackTrace();
+    	}
+    	ImageView iv = new android.widget.ImageView(getContext());
+    	iv.setAdjustViewBounds(true);
+    	//image maxHeigh and maxWidth
+    	iv.setMaxHeight(200);
+    	iv.setMaxWidth(200);
+    	iv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+    			LayoutParams.WRAP_CONTENT));
+    	iv.setPadding(0, 10, 0, 0);
+    	iv.setImageBitmap(bm);
+    	addView(iv);
+
+    	//add click listener for larger view (????)
+    	// on play, launch the appropriate viewer
+    	iv.setOnClickListener(new View.OnClickListener() {
+    		public void onClick(View v) {
+    			Intent i = new Intent("android.intent.action.VIEW");
+    			File f = new File(imagePath);
+    			i.setDataAndType(Uri.fromFile(f), "image" + "/*");
+    			((Activity) getContext()).startActivity(i);
+
+    		}
+    	});
+
+    }
     public void setFocus(Context context) {
-        // Hide the soft keyboard if it's showing.
-        InputMethodManager inputManager =
-                (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(this.getWindowToken(), 0);
+    	// Hide the soft keyboard if it's showing.
+    	InputMethodManager inputManager =
+    		(InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+    	inputManager.hideSoftInputFromWindow(this.getWindowToken(), 0);
     }
 
 }
