@@ -26,6 +26,12 @@ ArrayList<String> getQuestionImages()
 }}}
 return a list of images for each question
 
+*org.odk.collect.android.widgets SelectMultiWidget
+==Jeff ==
+
+*org.odk.collect.android.widgets SelectOneWidget
+==Jeff ==
+
 = Javarosa Core: = 
 
 *package org.javarosa.core.model FormDef
@@ -41,6 +47,12 @@ public Hashtable<String, ArrayList<String>> getImageSource()
   return image set lookup table
 
 *org.javarosa.core.model QuestionDef
+{{{
+	private Hashtable<String,String> otherAttribute;
+	private ArrayList<String> imageSet;
+	private String imagePath;
+}}}
+private field to store all other attribute in the <label> element, image set and one image path
 
 {{{
 public void setImageSet(ArrayList<String> imgSet)
@@ -65,6 +77,8 @@ public Hashtable<String,String> getOtherAttribute()
 {{{
 public void setOtherAttribute(Hashtable<String,String> otherAttribute)
 }}}
+
+==Jeff will write the answer change for image in answer==
 
 *org.javarosa.xform.parse XFormParser
 
@@ -95,3 +109,5 @@ private static void parseImage(ArrayList<String> imageList, Element image)
 private static void parseQuestionLabel
 }}}
  parse img attribute in label element and also pass all attributes
+
+==Jeff will write the answer change for image in answer==
