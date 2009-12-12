@@ -211,8 +211,7 @@ public class XFormParser {
 	}
 
 	public static FormDef getFormDef(Reader reader) {
-		System.out.println("Parsing form...");
-		
+
 		Document doc = getXMLDocument(reader);
 		try {
 			reader.close();
@@ -282,7 +281,6 @@ public class XFormParser {
 	private static void parseElement (FormDef f, Element e, Object parent, Hashtable handlers) { //,
 //			boolean allowUnknownElements, boolean allowText, boolean recurseUnknown) {
 		String name = e.getName();
-		System.out.println("*********** JavaRosa parseElement Name : " + name );
 		IElementHandler eh = (IElementHandler)handlers.get(name);
 		if (eh != null) {
 			eh.handle(f, e, parent);
@@ -678,7 +676,6 @@ public class XFormParser {
 					if (img.startsWith("jr:iimage('") && img.endsWith("')")) {
 						String imgRef = img.substring("jr:iimage('".length(), img.indexOf("')"));
 						if(f.getImageSource() != null){	
-							System.out.println("Get called" + imgRef +"with lable" + label);
 							
 							q.addSelectItemImageRef(label, imgRef);
 							q.addSelectItemImageSet(imgRef, f.getImageSource().get(imgRef));
