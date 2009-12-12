@@ -81,7 +81,8 @@ private static void parseIImage(FormDef f, Element iimage)
 {{{
 private static void parseImageSet(Hashtable<String, ArrayList<String>> iimageTable, Element imageset)
  }}}
-  parse each imageSet, call {{{
+  parse each imageSet, call 
+{{{
 parseImage
 }}}
 
