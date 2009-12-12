@@ -12,4 +12,4 @@ This list aims to document the functionality in the code base.
 
 == Features not yet included ==
 
-*
+*error handling for verifyMapping between iimage framework and image jr:iimage('Setname')
