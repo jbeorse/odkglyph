@@ -63,9 +63,6 @@ public class QuestionView extends ScrollView {
     private String mInstancePath;
     private final static int TEXTSIZE = 10;
 
-    //Hedy
-	private static final String TEST_PATH = "/sdcard/dream-society.jpg";
-	private static final String TEST_PATH2 = "/sdcard/gallery_photo_6.jpg";
     public QuestionView(Context context, PromptElement prompt, String instancePath) {
         super(context);
 
@@ -77,6 +74,7 @@ public class QuestionView extends ScrollView {
      * Create the appropriate view given your prompt.
      */
     public void buildView(PromptElement p) {
+    	
         mView = new LinearLayout(getContext());
         mView.setOrientation(LinearLayout.VERTICAL);
         mView.setGravity(Gravity.LEFT);
@@ -85,7 +83,6 @@ public class QuestionView extends ScrollView {
         // display which group you are in as well as the question
         AddGroupText(p);
         AddQuestionText(p);
-        //Hedy: alwasy display image now
         AddQuestionImage(p);
         AddHelpText(p);
 
@@ -220,8 +217,7 @@ public class QuestionView extends ScrollView {
 	}
    
     /**
-     * Hedy
-     * Add a TextView containing the question text.
+     * Add a ImageViews containing the image.
      */
     private void AddQuestionImage(PromptElement p) {
     
