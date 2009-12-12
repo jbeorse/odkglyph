@@ -5,5 +5,17 @@
 * Check the project with SVN 
   # URL: http://odkglyph.googlecode.com/svn/trunk/
   # Project to check out: ODK Collect, javarosa-core, javarosa-libs
+
 * Set up the correct link source
   # In the odk-collect project properties, under Java Build Path, and Source, Link Source and point your folder location to your javarosa/core/src location. There will be an error in the folder name. Change it to javarosa.
+
+* Note 
+  # To see the Xfromparser change reflected in ODK, you have to comment out code in org.odk.collect.android.tasks FormLoaderTask as in 
+{{{// comment out to get FormParser working
+   /*     if (formBin.exists()) {
+            // if we have binary, deserialize binary
+            fd = deserializeFormDef(formBin);
+            if (fd == null) {
+                return null;
+            }
+        } else {*/{{{
