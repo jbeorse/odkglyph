@@ -63,17 +63,12 @@ public class QuestionDef implements IFormElement, Localizable {
 	private String helpText;	 /* The help text. */
 	private String helpTextID;
 	
-	//Hedy
+	
 	private Hashtable<String,String> otherAttribute;
-	//need to put in the constant 
-	private final static String ConstantimgPath =  "img";
 	private ArrayList<String> imageSet;
 	private String imagePath;
 
-	
 
-
-	
 	// Clayton Sims - Jun 1, 2009 : These two elements _desperately_ need
 	// a solid description of what their arguments and function are, since
 	// they are complicit in so many bugs
@@ -111,7 +106,6 @@ public class QuestionDef implements IFormElement, Localizable {
 	public boolean equals (Object o) {
 		if (o instanceof QuestionDef) {
 			QuestionDef q = (QuestionDef)o;
-			//TO DO------------ Need to extend here
 			return (id == q.id &&
 					ExtUtil.equals(name, q.name) &&
 					ExtUtil.equals(binding, q.binding) &&
@@ -224,7 +218,6 @@ public class QuestionDef implements IFormElement, Localizable {
     	this.imagePath = imgPath;
     }
     
-    //Hedy , test interaction with JavaRosa and ODK
     public String getImagePath() {
     	return this.imagePath;
     }
@@ -473,10 +466,7 @@ public class QuestionDef implements IFormElement, Localizable {
 		if(this.selectItemImagesref == null){
 			selectItemImagesref = new OrderedHashtable();
 		}
-		System.out.println("Put image addSelectItemImageRef ");
-		System.out.println("label" + label);
-		System.out.println("imgref" + imgref);
-		
+	
 		selectItemImagesref.put(label, imgref);
 	}
 	
@@ -484,8 +474,6 @@ public class QuestionDef implements IFormElement, Localizable {
 		if(this.selectItemImagesTable == null){
 			this.selectItemImagesTable = new Hashtable<String,ArrayList<String>>();
 		}
-		System.out.println("Put image addSelectItemImageRef ");
-		System.out.println("label" + imgref);
 		selectItemImagesTable.put(imgref, imgs); 		
 	}
 	
