@@ -2,12 +2,12 @@
 
 = Introduction =
 
-Add your content here.
-
+This list aims to document the functionality in the code base. 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Feature List(supported) ==
+
+
+
+== Features not yet included ==
