@@ -111,3 +111,10 @@ private static void parseQuestionLabel
  parse img attribute in label element and also pass all attributes
 
 ==Jeff will write the answer change for image in answer==
+
+
+== What need to be changed, but not included(lower priority) == 
+
+*in QuestionDef: extend equals  to compare other private fields
+
+*in XFormParser: error handling for verifyMapping between iimage framework and image jr:iimage('Setname')
