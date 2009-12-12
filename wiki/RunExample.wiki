@@ -1,13 +1,31 @@
 #summary How to run the examples with one image and multiple image
 
 = Introduction =
-
-Add your content here.
+how to run the demo_from with extended glyph ODK
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+* Please see GettingStarted to checkout all files
+
+* connect your android phone to your computer
+* Do adb push to store the image files to your android phone
+{{{ 
+adb push gallery_photo_1.jpg /sdcard
+adb push gallery_photo_2.jpg /sdcard
+adb push gallery_photo_3.jpg /sdcard
+adb push gallery_photo_4.jpg /sdcard
+adb push gallery_photo_5.jpg /sdcard
+adb push gallery_photo_6.jpg /sdcard
+}}}
+
+* Do adb push to store the xforms to your android phone
+{{{
+adb push demo_from /sdcard/odk/forms
+}}}
+
+* right click ODK collect and Run As… Android Application. You will launch the ODK collect app
+
+* Click New Data and click Demo_form Form 
+
+== You can now run Glyph version of ODK collect ==
