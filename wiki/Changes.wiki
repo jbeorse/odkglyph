@@ -90,15 +90,12 @@ private static void parseModel}}}
 {{{
 private static void parseIImage(FormDef f, Element iimage)
 }}}
-  modify to check imageSet and call {{{parseImageSet}}}
+  modify to check imageSet and call _parseImageSet_
 
 {{{
 private static void parseImageSet(Hashtable<String, ArrayList<String>> iimageTable, Element imageset)
  }}}
-  parse each imageSet, call 
-{{{
-parseImage
-}}}
+  parse each imageSet, call _parseImage_
 
 {{{
 private static void parseImage(ArrayList<String> imageList, Element image)
@@ -113,8 +110,8 @@ private static void parseQuestionLabel
 ==Jeff will write the answer change for image in answer==
 
 
-== What need to be changed, but not included(lower priority) == 
+=== What need to be changed, but not included(lower priority) === 
 
-*in QuestionDef: extend equals  to compare other private fields
+*in QuestionDef: extend _equals_ to compare other private fields
 
-*in XFormParser: error handling for verifyMapping between iimage framework and image jr:iimage('Setname')
+*in XFormParser: error handling for _verifyMapping_ between iimage framework and image jr:iimage('Setname')
