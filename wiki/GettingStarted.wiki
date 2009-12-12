@@ -11,10 +11,11 @@
 
 * Note 
   # To see the Xfromparser change reflected in ODK, you have to comment out code in org.odk.collect.android.tasks FormLoaderTask as in 
-   {{{     if (formBin.exists()) {
-            // if we have binary, deserialize binary
+   {{{   
+      if (formBin.exists()) {
             fd = deserializeFormDef(formBin);
             if (fd == null) {
                 return null;
             }
-        } else { }}}
+        } else { 
+   }}}
