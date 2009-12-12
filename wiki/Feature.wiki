@@ -8,8 +8,15 @@ This list aims to document the functionality in the code base.
 
 == Feature List(supported) ==
 
+*Multi-images using iimage framework for question and answer
+
+*one image with file name for question adn answer
 
 
 == Features not yet included ==
 
 *error handling for verifyMapping between iimage framework and image jr:iimage('Setname')
+
+*create separate folder for each form to store all images and form
+
+*ability to download images
