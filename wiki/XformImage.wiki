@@ -2,10 +2,10 @@
 
 = Introduction =
 
-We allow two method to specify images. 
+We allow two methods to specify images. 
 
 = Details =
-We support image by specifying img tag in the label element
+We support images by specifying img tag in the label element
 
 == First == 
 
@@ -15,16 +15,16 @@ The image is specified with the image filename in attribute img
 <label img="imagefile">question content?</label>
 }}}
 
-In the ODK collect app, imagefile is stored in path /sdcard/odk/forms/ form_name/imagefile.
+In the ODK collect app, the imagefile is stored in path /sdcard/odk/images/form_name/imagefile.
 The same path is used to find the image. 
 
 For example: 
 In our demo_form.xml, 
 {{{
-<label img="gallery_photo_4.jpg">What do you think about this pix?</label>
+<label img="gallery_photo_4.jpg">What do you think about this pic?</label>
 }}}
 
-The image will be stored in /sdcard/odk/forms/ demo_form/gallery_photo_4.jpg
+The image will be stored in /sdcard/odk/images/demo_form/gallery_photo_4.jpg
 
 == Second == 
 
@@ -39,7 +39,7 @@ We can have multi-images using iimage framework inside model.
 </model>
 }}}
 
-The image_filename1 and image_filename are stored in the location as described in _FIRST_ part
+The image_filename1 and image_filename2 are stored in the location as described in _FIRST_ part
 
 In your question label, you can link to the image set with setname
 {{{
