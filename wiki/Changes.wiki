@@ -34,12 +34,35 @@ private String mFormPath;
   Store the path to the XForm. This is used to find the path to the image.
 
 {{{
- public SelectMultiWidget(Context context, String mFormPath) {
-        super(context);
-        this.mFormPath = mFormPath;
- }
+public SelectMultiWidget(Context context, String mFormPath) {
+       super(context);
+       this.mFormPath = mFormPath;
+}
 }}}
   Set the path in the constructor
+
+{{{
+public void buildView(final PromptElement prompt) {
+...
+   if(images != null && images.containsKey(k)){
+
+        String imagePath = (String) images.get(k);
+    	AddOneImage(imagePath);
+    }else if (imagesRef!=null && imagesRef.containsKey(k)){
+    				
+        String imageSetRef = (String)imagesRef.get(k);
+        ArrayList<String> imgSet = prompt.getSelectItemImageSet(imageSetRef);
+    				
+        if(imgSet != null){
+    	    for(int l=0; l< imgSet.size();l++){
+    		 String imagePath = imgSet.get(l);
+    		 AddOneImage(imagePath);
+    	    }
+        }               
+    }
+}
+}}}
+ Read the image path from the QuestionDef. Determine if it is one or multiple images and act accordingly.
 
 *org.odk.collect.android.widgets SelectOneWidget
 ==Jeff ==
