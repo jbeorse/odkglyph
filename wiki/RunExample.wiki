@@ -11,17 +11,17 @@ how to run the demo_from with extended glyph ODK
 * connect your android phone to your computer
 * Do adb push to store the image files to your android phone
 {{{ 
-adb push gallery_photo_1.jpg /sdcard
-adb push gallery_photo_2.jpg /sdcard
-adb push gallery_photo_3.jpg /sdcard
-adb push gallery_photo_4.jpg /sdcard
-adb push gallery_photo_5.jpg /sdcard
-adb push gallery_photo_6.jpg /sdcard
+adb push gallery_photo_1.jpg /sdcard/odk/images/Demo_form/gallery_photo_1.jpg
+adb push gallery_photo_2.jpg /sdcard/odk/images/Demo_form/gallery_photo_2.jpg
+adb push gallery_photo_3.jpg /sdcard/odk/images/Demo_form/gallery_photo_3.jpg
+adb push gallery_photo_4.jpg /sdcard/odk/images/Demo_form/gallery_photo_4.jpg
+adb push gallery_photo_5.jpg /sdcard/odk/images/Demo_form/gallery_photo_5.jpg
+adb push gallery_photo_6.jpg /sdcard/odk/images/Demo_form/gallery_photo_6.jpg
 }}}
 
 * Do adb push to store the xforms to your android phone
 {{{
-adb push demo_from /sdcard/odk/forms
+adb push Demo_form /sdcard/odk/forms/Demo_form
 }}}
 
 * right click ODK collect and Run As… Android Application. You will launch the ODK collect app
