@@ -13,7 +13,7 @@
   # URL: http://odkglyph.googlecode.com/svn/resources
 
 * Note 
-  # To see the XFormparser change reflected in ODK, you have to comment out code in org.odk.collect.android.tasks FormLoaderTask as in 
+  # To see the XFormParser change reflected in ODK, you have to comment out code in org.odk.collect.android.tasks FormLoaderTask as in 
    {{{   
       if (formBin.exists()) {
             fd = deserializeFormDef(formBin);
