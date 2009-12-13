@@ -8,6 +8,8 @@ how to run the demo_from with extended glyph ODK
 
 * Please see GettingStarted to checkout all files
 
+* right click ODK collect and Run As… Android Application. You will launch the ODK collect app. You will not have directory /sdcard/odk/forms
+
 * connect your android phone to your computer
 * Do adb push to store the image files to your android phone
 {{{ 
