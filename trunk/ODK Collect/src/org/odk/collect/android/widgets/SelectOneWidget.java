@@ -53,10 +53,12 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
 
     private int mRadioChecked = -1;
     OrderedHashtable mItems;
+    private String mFormPath;
 
 
-    public SelectOneWidget(Context context) {
+    public SelectOneWidget(Context context, String mFormPath) {
         super(context);
+        this.mFormPath = mFormPath;
     }
 
 
@@ -150,7 +152,15 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
     		return;
     	}
 
-    	File f = new File(imagePath);
+    	String delims = "/+";
+		String[] pathPieces = mFormPath.split(delims);
+		String fullImagePath = "";
+		for(int i = 0; i< pathPieces.length-1; i++){
+			fullImagePath = fullImagePath.concat(pathPieces[i]);
+			fullImagePath = fullImagePath.concat("/");
+		}
+		fullImagePath = fullImagePath.concat(imagePath);
+    	File f = new File(fullImagePath);
 
     	Bitmap bm = null;
     	try {
