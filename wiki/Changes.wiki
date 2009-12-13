@@ -27,7 +27,19 @@ ArrayList<String> getQuestionImages()
 return a list of images for each question
 
 *org.odk.collect.android.widgets SelectMultiWidget
-==Jeff ==
+
+{{{
+private String mFormPath;
+}}}
+  Store the path to the XForm. This is used to find the path to the image.
+
+{{{
+ public SelectMultiWidget(Context context, String mFormPath) {
+        super(context);
+        this.mFormPath = mFormPath;
+ }
+}}}
+  Set the path in the constructor
 
 *org.odk.collect.android.widgets SelectOneWidget
 ==Jeff ==
