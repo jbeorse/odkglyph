@@ -8,14 +8,11 @@ This list aims to document the functionality in the code base.
 
 == Feature List(supported) ==
 
-*Multi-images using iimage framework for question and answer
+*Multi-images using iimage framework for questions or answers to select or select1 questions
 
-*one image with file name for question adn answer
+*Single image with file name for questions or answers to select or select1 questions
 
 
 == Features not yet included ==
-
-
-*create separate folder for each form to store all images and form
 
 *ability to download images
