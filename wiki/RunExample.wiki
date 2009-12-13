@@ -21,7 +21,7 @@ adb push gallery_photo_6.jpg /sdcard/odk/images/Demo_form/gallery_photo_6.jpg
 
 * Do adb push to store the xforms to your android phone
 {{{
-adb push Demo_form /sdcard/odk/forms/Demo_form
+adb push Demo_form.xml /sdcard/odk/forms/Demo_form.xml
 }}}
 
 * right click ODK collect and Run As… Android Application. You will launch the ODK collect app
