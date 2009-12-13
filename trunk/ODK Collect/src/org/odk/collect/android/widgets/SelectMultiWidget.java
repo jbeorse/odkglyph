@@ -204,13 +204,17 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	String delims = "/+";
 		String[] pathPieces = mFormPath.split(delims);
 		String fullImagePath = "";
-		for(int i = 0; i< pathPieces.length-1; i++){
-			fullImagePath = fullImagePath.concat(pathPieces[i]);
-			fullImagePath = fullImagePath.concat("/");
+		for(int i = 0; i< pathPieces.length-2; i++){
+			fullImagePath = fullImagePath.concat(pathPieces[i]+"/");
 		}
-		fullImagePath = fullImagePath.concat(imagePath);
 		
-    	File f = new File(fullImagePath);
+		fullImagePath = fullImagePath.concat("images/");
+		delims = ".xml";
+		
+		pathPieces = pathPieces[pathPieces.length-1].split(delims);
+		
+		fullImagePath = fullImagePath.concat(pathPieces[0] + "/" + imagePath);
+		File f = new File(fullImagePath);
     	Bitmap bm = null;
     	try {
     		bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));
