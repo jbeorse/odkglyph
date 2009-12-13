@@ -62,11 +62,13 @@ public class QuestionView extends ScrollView {
     private LinearLayout mView;
     private String mInstancePath;
     private final static int TEXTSIZE = 10;
+    private String mFormPath;
 
-    public QuestionView(Context context, PromptElement prompt, String instancePath) {
+    public QuestionView(Context context, PromptElement prompt, String instancePath, String mFormPath) {
         super(context);
 
         this.mInstancePath = instancePath;
+        this.mFormPath = mFormPath;
     }
 
 
@@ -87,7 +89,7 @@ public class QuestionView extends ScrollView {
         AddHelpText(p);
 
         // if question or answer type is not supported, use text widget
-        mQuestionWidget = WidgetFactory.createWidgetFromPrompt(p, getContext(), mInstancePath);
+        mQuestionWidget = WidgetFactory.createWidgetFromPrompt(p, getContext(), mInstancePath, mFormPath);
 
         mView.addView((View) mQuestionWidget);
         addView(mView);
@@ -168,8 +170,22 @@ public class QuestionView extends ScrollView {
     	{
     		return;
     	}
-       
-        File f = new File(imagePath);
+		String delims = "/+";
+		String[] pathPieces = mFormPath.split(delims);
+		String fullImagePath = "";
+		for(int i = 0; i< pathPieces.length-1; i++){
+			fullImagePath = fullImagePath.concat(pathPieces[i]);
+			fullImagePath = fullImagePath.concat("/");
+		}
+		fullImagePath = fullImagePath.concat(imagePath);
+    	File f = new File(fullImagePath);
+		
+//		fullImagePath.concat("images/");
+//		
+//		delims = ".+";
+//		pathPieces = pathPieces[pathPieces.length-1].split(delims);
+//		
+//		fullImagePath = fullImagePath.concat(pathPieces[0]);
 
         Bitmap bm = null;
         try {

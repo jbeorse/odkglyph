@@ -36,7 +36,7 @@ public class WidgetFactory {
      * @param instancePath path to the instance file
      */
     static public IQuestionWidget createWidgetFromPrompt(PromptElement pe, Context context,
-            String instancePath) {
+            String instancePath, String mFormPath) {
         IQuestionWidget questionWidget = null;
         switch (pe.getQuestionType()) {
             case Constants.CONTROL_INPUT:
@@ -71,10 +71,10 @@ public class WidgetFactory {
                 questionWidget = new MediaWidget(context, "video", instancePath);
                 break;
             case Constants.CONTROL_SELECT_ONE:
-                questionWidget = new SelectOneWidget(context);
+                questionWidget = new SelectOneWidget(context, mFormPath);
                 break;
             case Constants.CONTROL_SELECT_MULTI:
-                questionWidget = new SelectMultiWidget(context);
+                questionWidget = new SelectMultiWidget(context, mFormPath);
                 break;
             case Constants.CONTROL_TRIGGER:
                 questionWidget = new TriggerWidget(context);

@@ -56,10 +56,12 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     private final static int CHECKBOX_ID = 100;
     private boolean mCheckboxInit = true;
     OrderedHashtable mItems;
+    private String mFormPath;
 
 
-    public SelectMultiWidget(Context context) {
+    public SelectMultiWidget(Context context, String mFormPath) {
         super(context);
+        this.mFormPath = mFormPath;
     }
 
 
@@ -198,7 +200,17 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	{
     		return;
     	}
-    	File f = new File(imagePath);
+    	
+    	String delims = "/+";
+		String[] pathPieces = mFormPath.split(delims);
+		String fullImagePath = "";
+		for(int i = 0; i< pathPieces.length-1; i++){
+			fullImagePath = fullImagePath.concat(pathPieces[i]);
+			fullImagePath = fullImagePath.concat("/");
+		}
+		fullImagePath = fullImagePath.concat(imagePath);
+		
+    	File f = new File(fullImagePath);
     	Bitmap bm = null;
     	try {
     		bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));

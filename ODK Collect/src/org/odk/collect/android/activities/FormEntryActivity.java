@@ -483,7 +483,7 @@ public class FormEntryActivity extends Activity implements AnimationListener, Fo
                 return endView;
             case PromptElement.TYPE_QUESTION:
             default:
-                QuestionView qv = new QuestionView(this, prompt, mInstancePath);
+                QuestionView qv = new QuestionView(this, prompt, mInstancePath, mFormPath);
                 qv.buildView(prompt);
                 return qv;
         }
