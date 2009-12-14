@@ -65,7 +65,8 @@ public class QuestionDef implements IFormElement, Localizable {
 	
 	
 	private Hashtable<String,String> otherAttribute;
-	private ArrayList<String> imageSet;
+	private ArrayList<ImageItem> imageSet;
+//	private Hashtable<String,String> captionTable;
 	private String imagePath;
 
 
@@ -81,7 +82,7 @@ public class QuestionDef implements IFormElement, Localizable {
 	//Select item image for direct ref
 
 	private OrderedHashtable selectItemImagesref; 
-	private Hashtable<String,ArrayList<String>> selectItemImagesTable;
+	private Hashtable<String,ArrayList<ImageItem>> selectItemImagesTable;
 	
 	private Vector selectItemsLocalizable;
 	
@@ -204,13 +205,13 @@ public class QuestionDef implements IFormElement, Localizable {
     	}
     } 
 
-    public void setImageSet(ArrayList<String> imgSet) {
+    public void setImageSet(ArrayList<ImageItem> imgSet) {
     	// no need to deal with localization 
     	this.imageSet = imgSet;
     	
     }
     
-    public ArrayList<String> getImageSet(){
+    public ArrayList<ImageItem> getImageSet(){
     	return this.imageSet;
     }
     
@@ -221,8 +222,16 @@ public class QuestionDef implements IFormElement, Localizable {
     public String getImagePath() {
     	return this.imagePath;
     }
+ /*
+    public Hashtable<String,String> getCaptionTable() {
+    	return this.captionTable;
+    	
+    }
     
-
+    public void setCaptionTable(Hashtable<String,String> captions) {
+    	this.captionTable = captions;
+    }
+ */
     
     public Hashtable<String,String> getOtherAttribute() {
     	return this.otherAttribute;
@@ -469,10 +478,10 @@ public class QuestionDef implements IFormElement, Localizable {
 	
 		selectItemImagesref.put(label, imgref);
 	}
-	
-	public void addSelectItemImageSet(String imgref, ArrayList<String> imgs){
+//shirley answer changes
+	public void addSelectItemImageSet(String imgref, ArrayList<ImageItem> imgs){
 		if(this.selectItemImagesTable == null){
-			this.selectItemImagesTable = new Hashtable<String,ArrayList<String>>();
+			this.selectItemImagesTable = new Hashtable<String,ArrayList<ImageItem>>();
 		}
 		selectItemImagesTable.put(imgref, imgs); 		
 	}
@@ -489,7 +498,7 @@ public class QuestionDef implements IFormElement, Localizable {
 
 	}
 	
-	public ArrayList<String> getSelectItemImagesSet (String imgRef) {
+	public ArrayList<ImageItem> getSelectItemImagesSet (String imgRef) {
 
 		if(selectItemImagesTable ==null){
 			return null;
