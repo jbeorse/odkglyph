@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import android.app.Activity;
 import android.content.Context;
@@ -38,6 +39,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.javarosa.core.model.ImageItem;
 import org.javarosa.core.model.data.IAnswerData;
 import org.odk.collect.android.logic.GroupElement;
 import org.odk.collect.android.logic.PromptElement;
@@ -61,7 +63,10 @@ public class QuestionView extends ScrollView {
     private IQuestionWidget mQuestionWidget;
     private LinearLayout mView;
     private String mInstancePath;
-    private final static int TEXTSIZE = 10;
+    private final static int QUESTION_TEXTSIZE = 10;
+    private final static int CAPTION_TEXTSIZE = 5;
+
+	private static final int HELP_TEXTSIZE = 7;
     private String mFormPath;
 
     public QuestionView(Context context, PromptElement prompt, String instancePath, String mFormPath) {
@@ -140,7 +145,7 @@ public class QuestionView extends ScrollView {
         if (s.length() > 0) {
             TextView tv = new TextView(getContext());
             tv.setText(s.substring(0, s.length() - 3));
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, TEXTSIZE - 4);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, QUESTION_TEXTSIZE - 4);
             tv.setPadding(0, 0, 0, 5);
             mView.addView(tv);
         }
@@ -153,7 +158,7 @@ public class QuestionView extends ScrollView {
 	private void AddQuestionText(PromptElement p) {
         TextView tv = new TextView(getContext());
         tv.setText(p.getQuestionText());
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, TEXTSIZE);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, QUESTION_TEXTSIZE);
         tv.setTypeface(null, Typeface.BOLD);
 
         tv.setPadding(0, 0, 0, 5);
@@ -163,6 +168,18 @@ public class QuestionView extends ScrollView {
         mView.addView(tv);
                 
     }
+	
+	private void AddImageCaption(String caption){
+		TextView tv = new TextView(getContext());
+		tv.setText(caption);
+		tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, CAPTION_TEXTSIZE);
+		tv.setTypeface(null, Typeface.BOLD);
+		
+		tv.setPadding(0, 0, 0, 0);
+		
+		tv.setHorizontallyScrolling(false);
+		mView.addView(tv);
+	}
 
     //private method to set one single image
 	private void AddOneImage(final String imagePath){
@@ -243,15 +260,21 @@ public class QuestionView extends ScrollView {
 	}
    
     /**
-     * Add a ImageViews containing the image.
+     * Add a ImageView containing the image.
      */
     private void AddQuestionImage(PromptElement p) {
     
-    	ArrayList<String> imgSet = p.getQuestionImages();
+    	ArrayList<ImageItem> imgSet = p.getQuestionImages();
     	if(imgSet != null){
     		for(int i=0; i< imgSet.size();i++){
-    			String imagePath = imgSet.get(i);
+    			String imagePath = imgSet.get(i).getPath();
+    			System.out.println("before AddOneImage");
     			AddOneImage(imagePath);
+    			String imageCaption = imgSet.get(i).getCaption();
+    			if (imageCaption != null){
+    				System.out.println("imgCaption != null");
+    				AddImageCaption(imageCaption);
+    			}
     		}
     	}                
     }
@@ -266,7 +289,7 @@ public class QuestionView extends ScrollView {
 
         if (s != null && !s.equals("")) {
             TextView tv = new TextView(getContext());
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, TEXTSIZE - 3);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, HELP_TEXTSIZE);
             tv.setPadding(0, 0, 0, 7);
             // wrap to the widget of view
             tv.setHorizontallyScrolling(false);

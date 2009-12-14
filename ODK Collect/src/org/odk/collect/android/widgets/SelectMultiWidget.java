@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import org.javarosa.core.model.ImageItem;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;
@@ -176,11 +177,11 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     			}else if (imagesRef!=null && imagesRef.containsKey(k)){
     				
     				String imageSetRef = (String)imagesRef.get(k);
-    				ArrayList<String> imgSet = prompt.getSelectItemImageSet(imageSetRef);
+    				ArrayList<ImageItem> imgSet = prompt.getSelectItemImageSet(imageSetRef);
     				
     				if(imgSet != null){
     		    		for(int l=0; l< imgSet.size();l++){
-    		    			String imagePath = imgSet.get(l);
+    		    			String imagePath = imgSet.get(l).getPath();
     		    			AddOneImage(imagePath);
     		    		}
     		    	}               
