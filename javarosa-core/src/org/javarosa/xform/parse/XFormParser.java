@@ -32,6 +32,7 @@ import org.javarosa.core.model.FormDef;
 import org.javarosa.core.model.GroupDef;
 import org.javarosa.core.model.IDataReference;
 import org.javarosa.core.model.IFormElement;
+import org.javarosa.core.model.ImageItem;
 import org.javarosa.core.model.QuestionDef;
 import org.javarosa.core.model.condition.Condition;
 import org.javarosa.core.model.condition.Constraint;
@@ -505,7 +506,7 @@ public class XFormParser {
 				String imgRef = img.substring("jr:iimage('".length(), img.indexOf("')"));
 				if(f.getImageSource()==null){					
 					q.setImageSet(null);
-				}else{					
+				}else{	
 					q.setImageSet(f.getImageSource().get(imgRef));
 				}
 				
@@ -517,7 +518,7 @@ public class XFormParser {
 			q.setImagePath(null);
 		}
 		
-	    // Pass all other attribute to QuestionDef
+	    // Pass all other attributes to QuestionDef
 		Hashtable<String,String> allotherAttribute = new Hashtable<String,String>();
 		int itemcount = e.getAttributeCount();
 		for (int i=0; i<itemcount; i++){			
@@ -855,7 +856,8 @@ public class XFormParser {
 	
 
 	private static void parseIImage(FormDef f, Element iimage) {
-		Hashtable<String, ArrayList<String>> iimageTable = new Hashtable<String, ArrayList<String>>();
+		Hashtable<String, ArrayList<ImageItem>> iimageTable = new Hashtable<String, ArrayList<ImageItem>>();
+		
 		f.setImageSource(iimageTable);
 		
 		for (int i = 0; i < iimage.getChildCount(); i++) {
@@ -863,16 +865,17 @@ public class XFormParser {
 			if(imageset == null){
 				continue;
 			}
-
+//shirley start
 			parseImageSet(iimageTable, imageset);
 		}
 	}
 
-	private static void parseImageSet(Hashtable<String, ArrayList<String>> iimageTable, Element imageset) {
+	private static void parseImageSet(Hashtable<String, ArrayList<ImageItem>> iimageTable, 
+								      Element imageset) {
 		//get the attribute first
 		String name = imageset.getAttributeValue("", "setName");
 	
-		ArrayList<String> imageList = new ArrayList<String>();
+		ArrayList<ImageItem> imageList = new ArrayList<ImageItem>();
 		for (int i = 0; i < imageset.getChildCount(); i++) {
 				
 			Element image = imageset.getElement(i);
@@ -885,14 +888,53 @@ public class XFormParser {
 		iimageTable.put(name, imageList);
 	}
 
-	private static void parseImage(ArrayList<String> imageList, Element image){
-		//currently unused
-		String id = image.getAttributeValue("", "id");
-		String data = getXMLText(image,true);
-
-		if (data != null){			
-			imageList.add(data);
+	private static void parseImage(ArrayList<ImageItem> imageList, Element image){
+		
+		Hashtable<String,String> allotherAttribute = new Hashtable<String,String>();
+		int itemcount = image.getAttributeCount();
+		
+		String id = null;
+		String caption = null;
+		
+		for (int i=0; i<itemcount; i++){			
+			String attributeName = image.getAttributeName(i); 
+			String attributeValue = image.getAttributeValue(i);
+		
+			if(attributeName.equals("id")){
+				id = attributeValue;
+	      			System.out.println("parseImage id: " + id);
+			} else if (attributeName.equals("caption")){
+				caption = attributeValue;
+				System.out.println("parseImage caption:"+ caption);
+			}
 		}
+		String imgPath = getXMLText(image,true);
+		
+		if (imgPath != null){
+			System.out.println("Parser: imgPath!=null; path = " + imgPath + " caption = " + caption);
+			ImageItem img = new ImageItem(id, imgPath, caption);
+			imageList.add(img);
+		}
+//shirley end		
+/*		
+		//currently unused
+		String id = image.getAttributeValue("id", null);
+		
+		System.out.println("parseImage id: " + id);
+		String caption = image.getAttributeValue("caption",null);
+		
+		if (caption !=null){
+			System.out.println("parseImage caption:"+ caption);
+		}
+		String path = getXMLText(image,true);
+
+		if (path != null){			
+			imageList.add(path);
+			if (caption!= null){
+				captionTable.put(path, caption);
+			}
+		}
+*/
 	}
 	/**
 	 * KNOWN ISSUES WITH ITEXT

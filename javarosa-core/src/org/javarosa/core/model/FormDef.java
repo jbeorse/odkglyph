@@ -75,7 +75,9 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 	private Localizer localizer;
 	
 	//Hedy
-	private Hashtable<String, ArrayList<String>> iimageTable;
+	private Hashtable<String, ArrayList<ImageItem>> iimageTable;
+	private Hashtable<String, String> captionTable;
+	
 	public Vector triggerables; // <Triggerable>; this list is topologically ordered, meaning for any tA and tB in
 	//the list, where tA comes before tB, evaluating tA cannot depend on any result from evaluating tB
 	private boolean triggerablesInOrder; //true if triggerables has been ordered topologically (DON'T DELETE ME EVEN THOUGH I'M UNUSED)
@@ -217,11 +219,15 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 	}
 	
 
-	public void setImageSource(Hashtable<String, ArrayList<String>> iimage){
+	public void setImageSource(Hashtable<String, ArrayList<ImageItem>> iimage){
 		this.iimageTable = iimage;
 		
 	}
 
+	public void setCaptionSource(Hashtable<String, String> captionTable){
+		this.captionTable = captionTable;
+		
+	}
 	// don't think this should ever be called(!)
 	public IDataReference getBind() {
 		throw new RuntimeException("method not implemented");
@@ -1166,9 +1172,14 @@ public class FormDef implements IFormElement, Localizable, Persistable, IMetaDat
 	}
 	
 	//Hedy
-	public Hashtable<String, ArrayList<String>> getImageSource()
+	public Hashtable<String, ArrayList<ImageItem>> getImageSource()
 	{
 		return iimageTable;
+	}
+	
+	public Hashtable<String, String> getCaptionSource()
+	{
+		return captionTable;
 	}
 	
 	public Localizer getLocalizer() {
