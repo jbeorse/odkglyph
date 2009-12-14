@@ -30,6 +30,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.FrameLayout.LayoutParams;
 
+import org.javarosa.core.model.ImageItem;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
@@ -124,11 +125,11 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
     				AddOneImage(imagePath);
     			}else if (imagesRef!=null && imagesRef.containsKey(k)){
     				String imageSetRef = (String)imagesRef.get(k);
-    				ArrayList<String> imgSet = prompt.getSelectItemImageSet(imageSetRef);
+    				ArrayList<ImageItem> imgSet = prompt.getSelectItemImageSet(imageSetRef);
     				
     				if(imgSet != null){
     		    		for(int l=0; l< imgSet.size();l++){
-    		    			String imagePath = imgSet.get(l);
+    		    			String imagePath = imgSet.get(l).getPath();
     		    			AddOneImage(imagePath);
     		    		}
     		    	}               

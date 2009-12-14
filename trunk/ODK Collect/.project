@@ -34,7 +34,12 @@
 		<link>
 			<name>javarosa</name>
 			<type>2</type>
-			<location>C:/Users/ACER 4930G/Documents/Hedy490/Workspace/javarosa/core/src</location>
+			<location>/Applications/eclipse/Eclipse.app/Contents/MacOS/C::/Users/ACER 4930G/Documents/Hedy490/Workspace/javarosa/core/src</location>
+		</link>
+		<link>
+			<name>javarosa-core</name>
+			<type>2</type>
+			<location>/Users/haining/odkglyph/javarosa-core/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>

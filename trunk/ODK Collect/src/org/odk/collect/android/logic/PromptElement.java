@@ -18,6 +18,7 @@ package org.odk.collect.android.logic;
 
 import org.javarosa.core.model.FormDef;
 import org.javarosa.core.model.FormIndex;
+import org.javarosa.core.model.ImageItem;
 import org.javarosa.core.model.QuestionDef;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.instance.TreeElement;
@@ -213,7 +214,7 @@ public class PromptElement {
 
     }
 
-    public ArrayList<String> getSelectItemImageSet(String imgRef){
+    public ArrayList<ImageItem> getSelectItemImageSet(String imgRef){
     	return (((QuestionDef) mBinding.element).getSelectItemImagesSet(imgRef));
     }
 
@@ -232,22 +233,21 @@ public class PromptElement {
     /**
      * The image path of question in the prompt
      */
-    public ArrayList<String> getQuestionImages()
+    public ArrayList<ImageItem> getQuestionImages()
     {
-    	ArrayList<String> QImageSet = ((QuestionDef) mBinding.element).getImageSet();
+    	ArrayList<ImageItem> QImageSet = ((QuestionDef) mBinding.element).getImageSet();
     	if(QImageSet != null){
     		return QImageSet;
     	}
     	String imagePath = (((QuestionDef) mBinding.element).getImagePath());
     	if( imagePath != null){
-    		ArrayList<String> imgSet = new ArrayList<String>();
-    		imgSet.add(imagePath);
+    		ArrayList<ImageItem> imgSet = new ArrayList<ImageItem>();
+    		imgSet.add(new ImageItem(null, imagePath, null));
     		return imgSet;
     	}
     	
     	return null;
     }
-
 
     /**
      * The help text of question in the prompt.
