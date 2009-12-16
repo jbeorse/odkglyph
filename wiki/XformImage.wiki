@@ -1,4 +1,4 @@
-#summary Explain how to link to the correct image
+#summary How to link to the correct image
 
 = Introduction =
 
