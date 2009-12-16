@@ -236,13 +236,15 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	iv.setPadding(0, 10, 0, 0);
     	iv.setImageBitmap(bm);
     	addView(iv);
+    	
+    	final String ipath = fullImagePath;
 
     	//add click listener for larger view (????)
     	// on play, launch the appropriate viewer
     	iv.setOnClickListener(new View.OnClickListener() {
     		public void onClick(View v) {
     			Intent i = new Intent("android.intent.action.VIEW");
-    			File f = new File(imagePath);
+    			File f = new File(ipath);
     			i.setDataAndType(Uri.fromFile(f), "image" + "/*");
     			((Activity) getContext()).startActivity(i);
 
