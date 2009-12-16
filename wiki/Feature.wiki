@@ -8,9 +8,11 @@ This list aims to document the functionality in the code base.
 
 == Feature List(supported) ==
 
-*Multi-images using iimage framework for questions or answers to select or select1 questions
+*Multiple images using iimage framework for questions or answers to select or select1 questions
 
 *Single image with file name for questions or answers to select or select1 questions
+
+*Captioning for the images in sets in questions
 
 
 == Features not yet included ==
