@@ -244,13 +244,13 @@ public class QuestionView extends ScrollView {
    
     	
     	mView.addView(iv);
-
+    	final String ipath = fullImagePath;
     	//add click listener for larger view (????)
         // on play, launch the appropriate viewer
     	iv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent("android.intent.action.VIEW");
-                File f = new File(imagePath);
+                File f = new File(ipath);
                 i.setDataAndType(Uri.fromFile(f), "image" + "/*");
                 ((Activity) getContext()).startActivity(i);
 
@@ -260,7 +260,7 @@ public class QuestionView extends ScrollView {
 	}
    
     /**
-     * Add a ImageView containing the image.
+     * Add an ImageView containing the image and caption.
      */
     private void AddQuestionImage(PromptElement p) {
     
