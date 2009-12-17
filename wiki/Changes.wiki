@@ -2,7 +2,7 @@
 
 =ODK Collect:= 
 
-* org.odk.collect.android.views [http://www.google.com/codesearch?q=questionview+package%3Ahttp%3A%2F%2Fodkglyph\.googlecode\.com&origq=questionview&btnG=Search+Trunk QuestionView]
+* org.odk.collect.android.views [http://www.google.com/codesearch/p?hl=zh-TW#95ain4QE0Ns/trunk/ODK%20Collect/src/org/odk/collect/android/views/QuestionView.java&q=questionview%20package:http://odkglyph\.googlecode\.com&sa=N&cd=1&ct=rc QuestionView]
 
 {{{
 public void buildView(PromptElement p)
