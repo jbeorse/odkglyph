@@ -2,7 +2,7 @@
 
 =ODK Collect:= 
 
-*org.odk.collect.android.views QuestionView
+*org.odk.collect.android.views.QuestionView
 
 {{{
 public void buildView(PromptElement p)
