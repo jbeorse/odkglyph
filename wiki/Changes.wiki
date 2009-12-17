@@ -2,7 +2,7 @@
 
 =ODK Collect:= 
 
-*org.odk.collect.android.views.QuestionView
+* org.odk.collect.android.views [http://www.google.com/codesearch?q=questionview+package%3Ahttp%3A%2F%2Fodkglyph\.googlecode\.com&origq=questionview&btnG=Search+Trunk QuestionView]
 
 {{{
 public void buildView(PromptElement p)
@@ -19,7 +19,7 @@ void AddQuestionImage(PromptElement p)
 }}}
   add images to question
 
-*org.odk.collect.android.logic PromptElement
+* org.odk.collect.android.logic PromptElement
 
 {{{
 ArrayList<String> getQuestionImages()
@@ -147,6 +147,6 @@ private static void parseQuestionLabel
 
 === What need to be changed, but not included(lower priority) === 
 
-*in QuestionDef: extend _equals_ to compare other private fields
+*in QuestionDef: extend _equals_ to compare other private fields*
 
-*in XFormParser: error handling for _verifyMapping_ between iimage framework and image jr:iimage('Setname')
+*in XFormParser: error handling for _verifyMapping_ between iimage framework and image jr:iimage('Setname')*
