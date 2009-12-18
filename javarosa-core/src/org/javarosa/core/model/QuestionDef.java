@@ -66,7 +66,6 @@ public class QuestionDef implements IFormElement, Localizable {
 	
 	private Hashtable<String,String> otherAttribute;
 	private ArrayList<ImageItem> imageSet;
-//	private Hashtable<String,String> captionTable;
 	private String imagePath;
 
 
@@ -373,7 +372,6 @@ public class QuestionDef implements IFormElement, Localizable {
 	 * @see org.javarosa.core.util.Externalizable#readExternal(java.io.DataInputStream)
 	 */
 	public void readExternal(DataInputStream dis, PrototypeFactory pf) throws IOException, DeserializationException {
-		System.out.println("*************** readExternal get called");
 		setID(ExtUtil.readInt(dis));
 		setTitle((String)ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
 		setAppearanceAttr((String)ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));

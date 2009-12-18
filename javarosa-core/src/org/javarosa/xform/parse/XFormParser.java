@@ -865,7 +865,6 @@ public class XFormParser {
 			if(imageset == null){
 				continue;
 			}
-//shirley start
 			parseImageSet(iimageTable, imageset);
 		}
 	}
@@ -915,26 +914,7 @@ public class XFormParser {
 			ImageItem img = new ImageItem(id, imgPath, caption);
 			imageList.add(img);
 		}
-//shirley end		
-/*		
-		//currently unused
-		String id = image.getAttributeValue("id", null);
-		
-		System.out.println("parseImage id: " + id);
-		String caption = image.getAttributeValue("caption",null);
-		
-		if (caption !=null){
-			System.out.println("parseImage caption:"+ caption);
-		}
-		String path = getXMLText(image,true);
 
-		if (path != null){			
-			imageList.add(path);
-			if (caption!= null){
-				captionTable.put(path, caption);
-			}
-		}
-*/
 	}
 	/**
 	 * KNOWN ISSUES WITH ITEXT
