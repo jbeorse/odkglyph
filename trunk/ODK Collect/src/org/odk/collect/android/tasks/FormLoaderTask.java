@@ -63,14 +63,13 @@ public class FormLoaderTask extends AsyncTask<String, String, FormHandler> {
         File formXml = new File(formPath);
         File formBin =
                 new File(GlobalConstants.CACHE_PATH + FileUtils.getMd5Hash(formXml) + ".formdef");
-// comment out to get FormParser working
-   /*     if (formBin.exists()) {
+        if (formBin.exists()) {
             // if we have binary, deserialize binary
             fd = deserializeFormDef(formBin);
             if (fd == null) {
                 return null;
             }
-        } else {*/
+        } else {
             // no binary, read from xml
             try {
                 fis = new FileInputStream(formXml);
@@ -84,7 +83,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormHandler> {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-       // }
+        }
 
         // create formhandler from formdef
         fh = new FormHandler(fd);
