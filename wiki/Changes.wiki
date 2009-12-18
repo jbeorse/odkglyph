@@ -1,5 +1,6 @@
 #summary Changes from original ODK Collect and javarosa core
 
+== Please do not see this page for a full list of change.. see Downloads ==
 =ODK Collect:= 
 
 * org.odk.collect.android.views [QuestionView]
