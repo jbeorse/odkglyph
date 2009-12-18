@@ -1,5 +1,7 @@
 #summary How to run the examples with one image and multiple image
 
+Please do not see this page for a full list of change.. see Downloads 
+
 = Introduction =
 how to run the demo_from with extended glyph ODK
 
