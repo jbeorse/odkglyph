@@ -1,0 +1,15 @@
+#summary A summary of the changes made to javarosa and odk collect and why they were made. This would be a good place to look if you want to make similar changes to how javarosa reads XForms.
+
+= Details =
+
+ * This summary will only go into adding a single image, for simplicity. 
+
+ * The first problem we had to solve to add images to odk collect was to read them from the XForms. We decided to add an img attribute to the label tag where the user would specify the image name. We chose an attribute because it was the least obtrusive way to add it (it broke XForms the least). This image would be stored in a specific directory structure (in this case "/sdcard/odk/images/[form-name]/", but this can be anything as long as the code that loads the images is adjusted properly). We chose this structure because it was backwards compatible with old forms. 
+
+ * To read that img attribute we had to change XFormParser.java in the javarosa core source. For images in questions we had to add code to the parseQuestionLabel method, and for answers we changed the parseItem method. In general, if you want to change how javarosa reads xforms you search this file for the code that parses the particular part of the XForm you wish to change. We added a hash table to read all attributes specified in a question label, so part of the framework is already there if you want to add more attributes to questions. 
+
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
