@@ -96,10 +96,8 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
 
     	if (prompt.getSelectItems() != null) {    
     		OrderedHashtable h = prompt.getSelectItems();
-    		//*****Jeff added code*****//
     		OrderedHashtable images = prompt.getSelectItemImages();
     		OrderedHashtable imagesRef = prompt.getSelectItemImagesRef();
-    		//*****end*****//
     		Enumeration e = h.keys();
     		String k = null;
     		String v = null;
@@ -117,8 +115,6 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
     			r.setEnabled(!prompt.isReadOnly());
     			r.setFocusable(!prompt.isReadOnly());
     			addView(r);
-
-    			//****ODK Glyph Jeff/Hedy added code***//
     			if(images != null && images.containsKey(k)){
     				
     				String imagePath = (String) images.get(k);
@@ -134,7 +130,6 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
     		    		}
     		    	}               
     			}
-    			//****END
     			
     			if (v.equals(s)) {
     				r.setChecked(true);
@@ -172,10 +167,8 @@ public class SelectOneWidget extends RadioGroup implements IQuestionWidget {
     	try {
     		bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));
     	} catch (FileNotFoundException e) {
-    		Log.i("Hedy","file not found");
     		e.printStackTrace();
     	} catch (IOException e) {
-    		Log.i("Hedy","IO Exception found");
     		e.printStackTrace();
     	}
 

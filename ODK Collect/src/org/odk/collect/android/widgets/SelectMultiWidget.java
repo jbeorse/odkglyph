@@ -124,8 +124,7 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
 
     	if (prompt.getSelectItems() != null) {
     		OrderedHashtable h = prompt.getSelectItems();
-    		
-    		//ODK Glyph Hedy
+
     		OrderedHashtable images = prompt.getSelectItemImages();
     		OrderedHashtable imagesRef = prompt.getSelectItemImagesRef();
     		
@@ -152,7 +151,6 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     				}
     			});
     			c.setId(CHECKBOX_ID + i);
-    			Log.i("Hedy","Current item index is " + i);
     			c.setText(k);
     			c.setTextSize(TypedValue.COMPLEX_UNIT_PT, GlobalConstants.APPLICATION_FONTSIZE);
     			for (int vi = 0; vi < ve.size(); vi++) {
@@ -166,7 +164,6 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     			c.setEnabled(!prompt.isReadOnly());
     			addView(c);
     			i++;
-    			//** ODK Glyph Jeff/ Hedy added code***//
     			if(images != null && images.containsKey(k)){
 
     				String imagePath = (String) images.get(k);
@@ -183,7 +180,6 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     		    		}
     		    	}               
     			}
-    			//**END
     			
     		}
     	}
@@ -191,8 +187,6 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	mCheckboxInit = false;
     }
 
-
-    //** ODK Glyph Hedy added code***//
     private void AddOneImage(final String imagePath){
     	if(imagePath == null)
     	{
@@ -217,10 +211,8 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	try {
     		bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));
     	} catch (FileNotFoundException e) {
-    		Log.i("ODK Glyph Error","file not found");
     		e.printStackTrace();
     	} catch (IOException e) {
-    		Log.i("ODK Glyph Error","IO Exception found");
     		e.printStackTrace();
     	}
     	ImageView iv = new android.widget.ImageView(getContext());
@@ -249,6 +241,8 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
     	});
 
     }
+    
+    
     public void setFocus(Context context) {
     	// Hide the soft keyboard if it's showing.
     	InputMethodManager inputManager =

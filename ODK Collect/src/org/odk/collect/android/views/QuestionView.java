@@ -189,18 +189,7 @@ public class QuestionView extends ScrollView {
     	{
     		return;
     	}
-		/*
-		String delims = "/+";
-		String[] pathPieces = mFormPath.split(delims);
-		String fullImagePath = "";
-		for(int i = 0; i< pathPieces.length-1; i++){
-			fullImagePath = fullImagePath.concat(pathPieces[i]);
-			fullImagePath = fullImagePath.concat("/");
-		}
-		fullImagePath = fullImagePath.concat(imagePath);
-    	File f = new File(fullImagePath);
-    	*/
-		////////////////
+
     	String delims = "/+";
 		String[] pathPieces = mFormPath.split(delims);
 		String fullImagePath = "";
@@ -215,15 +204,12 @@ public class QuestionView extends ScrollView {
 		
 		fullImagePath = fullImagePath.concat(pathPieces[0] + "/" + imagePath);
 		File f = new File(fullImagePath);
-		///////////////////////
         Bitmap bm = null;
         try {
 			bm = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), Uri.fromFile(f));
 		} catch (FileNotFoundException e) {
-			Log.i("Hedy","file not found");
 			e.printStackTrace();
 		} catch (IOException e) {
-			Log.i("Hedy","IO Exception found");
 			e.printStackTrace();
 		}
        
@@ -270,11 +256,9 @@ public class QuestionView extends ScrollView {
     	if(imgSet != null){
     		for(int i=0; i< imgSet.size();i++){
     			String imagePath = imgSet.get(i).getPath();
-    			System.out.println("before AddOneImage");
     			AddOneImage(imagePath);
     			String imageCaption = imgSet.get(i).getCaption();
     			if (imageCaption != null){
-    				System.out.println("imgCaption != null");
     				AddImageCaption(imageCaption);
     			}
     		}
