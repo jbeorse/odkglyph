@@ -206,7 +206,6 @@ public class QuestionDef implements IFormElement, Localizable {
     } 
 
     public void setImageSet(ArrayList<ImageItem> imgSet) {
-    	// no need to deal with localization 
     	this.imageSet = imgSet;
     	
     }
@@ -222,16 +221,6 @@ public class QuestionDef implements IFormElement, Localizable {
     public String getImagePath() {
     	return this.imagePath;
     }
- /*
-    public Hashtable<String,String> getCaptionTable() {
-    	return this.captionTable;
-    	
-    }
-    
-    public void setCaptionTable(Hashtable<String,String> captions) {
-    	this.captionTable = captions;
-    }
- */
     
     public Hashtable<String,String> getOtherAttribute() {
     	return this.otherAttribute;
@@ -478,7 +467,7 @@ public class QuestionDef implements IFormElement, Localizable {
 	
 		selectItemImagesref.put(label, imgref);
 	}
-//shirley answer changes
+
 	public void addSelectItemImageSet(String imgref, ArrayList<ImageItem> imgs){
 		if(this.selectItemImagesTable == null){
 			this.selectItemImagesTable = new Hashtable<String,ArrayList<ImageItem>>();
