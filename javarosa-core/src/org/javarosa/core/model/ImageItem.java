@@ -1,7 +1,7 @@
 package org.javarosa.core.model;
 
 /**
- * 
+ * ImageItem Has fields for image ID, path, and caption.
  * 
  * @author - Jeff Beorse, Wei-Ting Liao, Shirley Liou
  * 
@@ -12,7 +12,7 @@ public class ImageItem {
 	private String imageID;    /* should be unique name per instance of 
 								  an image, even if image is shown twice in a form */
 	private String imagePath;  /* the file name */
-	private String imageCaption;
+	private String imageCaption; 
 	
 	
 	public ImageItem() {
