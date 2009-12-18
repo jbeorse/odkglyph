@@ -89,7 +89,6 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
         // counter for offset
         int i = 0;
         while (en.hasMoreElements()) {
-        	Log.i("Hedy","More elements");
             k = (String) en.nextElement();
             v = (String) mItems.get(k);
             CheckBox c = ((CheckBox) findViewById(CHECKBOX_ID + i));
@@ -102,9 +101,7 @@ public class SelectMultiWidget extends LinearLayout implements IQuestionWidget {
              }else
              {
             	 i++;
-            	 Log.i("Hedy","Checkbox is null w/ index" + i);
              }
-            
         }
 
         if (ve.size() == 0) {

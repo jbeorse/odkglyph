@@ -168,7 +168,9 @@ public class QuestionView extends ScrollView {
         mView.addView(tv);
                 
     }
-	
+	/**
+     * Add a TextView containing the caption text of an image.
+     */
 	private void AddImageCaption(String caption){
 		TextView tv = new TextView(getContext());
 		tv.setText(caption);
