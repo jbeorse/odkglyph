@@ -203,17 +203,18 @@ public class PromptElement {
     }
 
     public OrderedHashtable getSelectItemImages() {
-
     	return (((QuestionDef) mBinding.element).getSelectItemImages());
 
     }
     
     public OrderedHashtable getSelectItemImagesRef() {
-
     	return (((QuestionDef) mBinding.element).getSelectItemImagesRef());
 
     }
 
+	/**
+	 * the set of images for a select item
+	 */
     public ArrayList<ImageItem> getSelectItemImageSet(String imgRef){
     	return (((QuestionDef) mBinding.element).getSelectItemImagesSet(imgRef));
     }
@@ -231,7 +232,7 @@ public class PromptElement {
     }
     
     /**
-     * The image path of question in the prompt
+     * The images of the question in the prompt
      */
     public ArrayList<ImageItem> getQuestionImages()
     {
