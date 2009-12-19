@@ -13,6 +13,9 @@ how to run the demo_from with extended glyph ODK
 * right click ODK collect and Run As… Android Application. You will launch the ODK collect app. You will not have directory /sdcard/odk/forms
 
 * connect your android phone to your computer
+
+* Use adb shell to create this directory /sdcard/odk/images/  
+
 * Do adb push to store the image files to your android phone
 {{{ 
 adb push gallery_photo_1.jpg /sdcard/odk/images/Demo_form/gallery_photo_1.jpg
