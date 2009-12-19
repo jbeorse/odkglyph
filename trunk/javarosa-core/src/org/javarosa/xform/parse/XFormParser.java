@@ -301,7 +301,6 @@ public class XFormParser {
 
 	private static void parseTitle (FormDef f, Element e) {
 		String title = getXMLText(e, true);
-		System.out.println("Title: \"" + title + "\"");
 		f.setTitle(title);
 		if(f.getName() == null) {
 			//Jan 9, 2009 - ctsims
@@ -501,7 +500,6 @@ public class XFormParser {
 		
 		String img = e.getAttributeValue("","img");
 		if (img != null) {
-			System.out.println("img content" + img);
 			if (img.startsWith("jr:iimage('") && img.endsWith("')")) {
 				String imgRef = img.substring("jr:iimage('".length(), img.indexOf("')"));
 				if(f.getImageSource()==null){					
@@ -901,16 +899,13 @@ public class XFormParser {
 		
 			if(attributeName.equals("id")){
 				id = attributeValue;
-	      			System.out.println("parseImage id: " + id);
 			} else if (attributeName.equals("caption")){
 				caption = attributeValue;
-				System.out.println("parseImage caption:"+ caption);
 			}
 		}
 		String imgPath = getXMLText(image,true);
 		
 		if (imgPath != null){
-			System.out.println("Parser: imgPath!=null; path = " + imgPath + " caption = " + caption);
 			ImageItem img = new ImageItem(id, imgPath, caption);
 			imageList.add(img);
 		}
