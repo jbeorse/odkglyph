@@ -1,6 +1,5 @@
 #summary Changes from original ODK Collect and javarosa core
 
-== Please do not see this page for a full list of change.. see Downloads ==
 =ODK Collect:= 
 
 * This content has been moved to a Word file in the resources folder of the source code. Please see /svn/resources/ODK Glyph Change Log.doc
