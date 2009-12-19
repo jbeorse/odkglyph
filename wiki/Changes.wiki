@@ -2,4 +2,4 @@
 
 =ODK Collect:= 
 
-* This content has been moved to a Word file found at http://code.google.com/p/odkglyph/downloads/list
+* This content has been moved to a Word file (ODK Glyph Change Log.doc) found at http://code.google.com/p/odkglyph/downloads/list
