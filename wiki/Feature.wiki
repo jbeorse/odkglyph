@@ -14,6 +14,7 @@ This list aims to document the functionality in the code base.
 
 *Captioning for the images in sets in questions
 
+*Click the image cna bring another view to see zoom in the image 
 
 == Features not yet included ==
 
