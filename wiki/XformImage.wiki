@@ -32,8 +32,8 @@ We can have multi-images using iimage framework inside model.
 {{{
 <iimage>
 <imageSet setName="setname">
-<image id="id">image_filename1</image>			
-<image id="id"> image_filename2 </image>	
+<image id="id" caption="caption">image_filename1</image>			
+<image id="id" caption="caption">image_filename2 </image>	
 …		
 </imageSet></iimage>
 </model>
@@ -51,9 +51,9 @@ In our demo_form.xml, we have image set
 {{{
 <iimage>
 <imageSet setName="Q1">
-<image id="img_1">gallery_photo_1.jpg</image>			
-<image id="img_2">gallery_photo_2.jpg</image>	
-<image id="img_3">gallery_photo_3.jpg</image>		
+<image id="img_1 "caption="Figure 1">gallery_photo_1.jpg</image>			
+<image id="img_2 "caption="Figure 2" >gallery_photo_2.jpg</image>	
+<image id="img_3 "caption="Figure 3">gallery_photo_3.jpg</image>		
 </imageSet>
 </iimage>
 }}}
